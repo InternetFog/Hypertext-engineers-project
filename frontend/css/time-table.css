@@ -189,6 +189,10 @@ a.history-brash-item:active {
 	fill: var(--color-esstu-cyan-grey);
 }
 
+.time-table-search-btn:active svg path {
+	fill: var(--color-esstu-cyan);
+}
+
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
 /* Небольшие мониторы */
