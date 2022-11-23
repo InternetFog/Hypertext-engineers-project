@@ -1,0 +1,121 @@
+/* --------------- Основные стили подвала -------------- */
+footer {
+	background: var(--color-esstu-cyan-light-d);
+	padding: 30px 15px;
+}
+
+.footer-sections-wrapper {
+	position: relative;
+	display: grid;
+	grid-template-columns: 3fr 2fr 1fr;
+	margin: 0 auto;
+	max-width: var(--max-width-content-block);
+}
+
+.footer-section {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.footer-section:nth-child(2n-1) {
+	padding-right: 25px;
+}
+
+.footer-section:nth-child(2n) {
+	padding-left: 25px;
+	border-left: 2px solid var(--color-esstu-cyan-grey);
+}
+
+.footer-section p {
+	font-size: var(--font-size-content-small);
+	color: var(--color-esstu-cyan-dark);
+	line-height: 1.5em;
+}
+
+.footer-section p:not(:last-of-type) {
+	margin-bottom: 1em;
+}
+
+.footer-section a {
+	color: var(--color-esstu-cyan-dark);
+}
+
+.footer-section a:hover {
+	text-decoration: none;
+}
+
+
+
+/* --------------- Счётчики и соцсети -------------- */
+.social-networks-n-counters-block {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.social-networks-block,
+.counters-block {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.social-networks-block a {
+	display: block;
+	margin-left: 5px;
+	transition: 0.1s;
+}
+
+.social-networks-block a:hover {
+	filter: brightness(95%);
+}
+
+.social-networks-block a:active {
+	transform: scale(90%);
+}
+
+.social-networks-block svg {
+	width: 42px;
+}
+
+
+/* ----------------------------------------- Адаптация ---------------------------------------- */
+/* Планшеты и телефоны */
+@media only screen and (max-width: 900px) {
+	.footer-sections-wrapper {
+		display: block;
+	}
+
+	.footer-section {
+		padding-bottom: 25px;
+	}
+
+	.footer-section:nth-child(2n-1) {
+		padding-right: 0;
+	}
+
+	.footer-section:nth-child(2n) {
+		padding-left: 0;
+		border-left: 0;
+	}
+
+	.social-networks-block,
+	.counters-block {
+		justify-content: flex-start;
+	}
+
+	.social-networks-block {
+		padding-bottom: 15px;
+	}
+	
+	.social-networks-block a {
+		margin-left: 0;
+		margin-right: 5px;
+	}
+
+	footer {
+		margin-bottom: var(--main-control-panel-width);
+	}
+}

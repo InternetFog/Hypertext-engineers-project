@@ -1,0 +1,81 @@
+/* ---------- Кастомные стили ---------- */
+:root {
+	/* Цвета */
+	--color-esstu-orange: #F57742;
+	--color-esstu-cyan: #138C9D;
+	--color-esstu-cyan-dark: #005966;
+	--color-esstu-cyan-light: #6EBBC5;
+	--color-esstu-cyan-grey: #60939A;
+	--color-esstu-cyan-light-c: #C9E3E8;
+	--color-esstu-cyan-light-d: #D8EAED;
+	--color-esstu-cyan-light-e: #EBF7F9;
+	--color-black: #000000;
+	--color-white: #FFFFFF;
+	--color-gray-f: #F7F7F7;
+	--color-gray-e: #EEEEEE;
+	--color-gray-d: #DFDFDF;
+	--color-gray-c: #C3C3C3;
+	--color-gray-9: #9F9F9F;
+	--color-gray-5: #565656;
+	--color-gray-4: #404040;
+
+	/* Размеры шрифтов */
+	--font-size-main: 15px;
+	--font-size-content-small: calc(var(--font-size-main) - 1px);  		/* 14px */
+	--font-size-content: var(--font-size-main);  								/* 15px */
+	--font-size-content-big: calc(var(--font-size-main) + 2px); 			/* 17px */
+	--font-size-heading: calc(var(--font-size-main) + 8px); 					/* 23px */
+	--font-size-heading-small: calc(var(--font-size-main) + 6px);			/* 21px */
+	--font-size-heading-very-small: calc(var(--font-size-main) + 4px);	/* 19px */
+	--font-size-heading-big: calc(var(--font-size-main) + 12px);			/* 27px */
+	--font-size-heading-very-big: calc(var(--font-size-main) + 16px);		/* 31px */
+
+	/* Размеры и отступы */
+	--main-control-panel-width: 70px;	/* Ширина боковой панели */
+	--max-width-content-block: 1220px;	/* Ширина контентной части */
+}
+
+
+/* ---------- Глобальные стили ---------- */
+@font-face {
+	font-family: 'Inter'; 
+	src: url(../fonts/Inter/Inter-variable.ttf); 
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	padding-left: var(--main-control-panel-width);
+	overflow-x: hidden;
+}
+
+
+
+/* ----------------------------------------- Адаптация ---------------------------------------- */
+
+/* Небольшие мониторы */
+@media only screen and (max-width: 1460px) {
+	:root {
+		--max-width-content-block: 1024px;	/* Ширина контентной части */
+		--main-control-panel-width: 60px;
+	}
+}
+
+/* Планшеты и телефоны */
+@media only screen and (max-width: 900px) {
+	body {
+		padding-left: 0;
+	}
+
+	:root {
+		--main-control-panel-width: 52px;
+	}
+}
