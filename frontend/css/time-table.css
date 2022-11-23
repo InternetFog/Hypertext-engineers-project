@@ -42,10 +42,13 @@ a.history-brash-item:active {
 }
 
 /* ----------------------------------------- Доски с расписанием ---------------------------------------- */
+
+/* ---------- Общие стили досок ------------ */
+
 .time-table-wrapper {
 	display: flex;
 	width: 100%;
-	height: calc(100vh - 150px);
+	height: calc(100vh - 195px);
 	min-height: 300px;
 	justify-content: space-between;
 	align-items: center;
@@ -96,12 +99,95 @@ a.history-brash-item:active {
 	position: relative;
 }
 
+/* ---------- Главное меню Расписания ------------ */
+
 .time-table-main-menu {
+	max-width: 300px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
+.time-table-main-menu .time-table-main-menu_descr {
+	display: block;
+	color: var(--color-esstu-cyan);
+	font-size: var(--font-size-content);
+	margin-bottom: 10px;	
+}
+
+.time-table-main-menu_btn {
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 10px;
+	margin-bottom: 10px;
+	font-size: var(--font-size-content);
+	font-weight: 600;
+	color: var(--color-esstu-cyan);
+	border-radius: 8px;
+	border: 2px solid var(--color-esstu-cyan);
+	transition: 100ms;
+}
+
+.time-table-main-menu_btn.filled {
+	color: var(--color-white);
+	background: var(--color-esstu-cyan);
+}
+
+/* --------------- Форма поиска по расписанию -------------- */
+.time-table-search-block {
+	margin: 30px 25px;
+	display: flex;
+	align-items: center;
+	border: 2px solid var(--color-esstu-cyan-light-c);
+	border-radius: 5px;
+}
+
+.time-table-search-input:focus {
+	outline: none;
+	border-color: var(--color-esstu-cyan);
+}
+
+.time-table-search-input {
+	box-sizing: border-box;
+	padding: 10px 15px;
+	width: calc(100% - 36px);
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	color: var(--color-esstu-cyan-dark);
+}
+
+.time-table-search-input::placeholder {
+	color: var(--color-esstu-cyan-grey);
+	opacity: 0.8;
+}
+
+.time-table-search-input:focus::placeholder {
+	opacity: 1;
+}
+
+.time-table-search-btn {
+	cursor: pointer;
+	position: relative;
+	width: 36px;
+	height: 36px;
+}
+
+.time-table-search-btn svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 20px;
+}
+
+.time-table-search-btn svg path {
+	fill: var(--color-esstu-cyan-grey);
+}
 
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
