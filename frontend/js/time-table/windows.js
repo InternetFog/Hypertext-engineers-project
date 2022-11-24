@@ -3,12 +3,14 @@ var tableWindow = {
 		left: document.querySelector(".time-table-block.left"),
 		right: document.querySelector(".time-table-block.right"),
 	},
-	create: function(structType) {
+	create: function(structType, heading, param3, param4, param5, param6) {
 		mainParent = document.createElement("div");
 		mainParent.classList.add("time-table-window");
 		switch(structType) {
 			case 'list':
 				mainParent.innerHTML = tableWindow.list.struct;
+				mainParent.querySelector('.time-table-heading').append(heading);
+
 				tableWindow.containers.left.append(mainParent);
 				tableWindow.list.dinamicUI();
 			break;
@@ -60,7 +62,7 @@ var tableWindow = {
 			<div class="time-table-heading-btn is-back">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24.03"><path id="arrow-left" d="M28,16.008H12.818l6.6-6.583a2.009,2.009,0,1,0-2.841-2.841l-10,10a2.068,2.068,0,0,0,0,2.841l10,10a2.009,2.009,0,1,0,2.841-2.841l-6.6-6.583H28a2,2,0,0,0,0-4Z" transform="translate(-6.005 -5.996)" fill="#f7f7f7"/></svg>
 			</div>
-			<h2 class="time-table-heading">Преподаватели</h2>
+			<h2 class="time-table-heading"></h2>
 		</div>
 		<div class="time-table-content-block">
 			<div class="time-table-search-block">
@@ -436,6 +438,16 @@ var tableWindow = {
 					tableWindow.create('detailed');
 				});
 			}
+
+			let tableSwitcherItems = document.querySelectorAll(".week-wrapper_about-style.about-text-style");
+			for (let i = 0; i < tableSwitcherItems.length; i++) {
+				tableSwitcherItems[i].addEventListener("click", function() {
+					let tableSwitcherItemActive = document.querySelector(".week-wrapper_about-style.about-text-style.active");
+					if(tableSwitcherItemActive != null)
+						tableSwitcherItemActive.classList.remove('active');
+					this.classList.toggle('active');
+				});
+			}
 		},
 	},
 	detailed: {
@@ -448,10 +460,10 @@ var tableWindow = {
 		</div>
 		<div class="time-table-content-block">
 			<div class="time-table-content-bkock_week-wrapper">
-				<div class="week-wrapper_about-style about-text-style active">
+				<div class="week-wrapper_about-style about-text-style map-mode-switcher active">
 					<span>План корпуса</span>
 				</div>
-				<div class="week-wrapper_about-style about-text-style">
+				<div class="week-wrapper_about-style about-text-style map-mode-switcher">
 					<span>Карта</span>
 				</div>
 			</div>
@@ -492,10 +504,10 @@ var tableWindow = {
 		dinamicUI: function() {
 			tableWindow.RightTableHeadingUI();
 
-			let tableSwitcherItems = document.querySelectorAll(".week-wrapper_about-style.about-text-style");
+			let tableSwitcherItems = document.querySelectorAll(".map-mode-switcher");
 			for (let i = 0; i < tableSwitcherItems.length; i++) {
 				tableSwitcherItems[i].addEventListener("click", function() {
-					let tableSwitcherItemActive = document.querySelector(".week-wrapper_about-style.about-text-style.active");
+					let tableSwitcherItemActive = document.querySelector(".map-mode-switcher.active");
 					if(tableSwitcherItemActive != null)
 						tableSwitcherItemActive.classList.remove('active');
 					this.classList.toggle('active');
@@ -505,9 +517,34 @@ var tableWindow = {
 	},
 }
 
-const timeTableMainMenu = document.querySelectorAll(".time-table-main-menu_btn.filled");
+const timeTableMainMenu = document.querySelectorAll(".time-table-main-menu_btn");
 for (let i = 0; i < timeTableMainMenu.length; i++) {
 	timeTableMainMenu[i].addEventListener("click", function() {
-		tableWindow.create('list');
+		let tableBtnRole = this.getAttribute('table-btn-role');
+		let heading;
+		switch(tableBtnRole) {
+			case 'bachelor': 
+				heading = 'Бакалавриат, специалитет';
+			break;
+			case 'magistracy': 
+				heading = 'Магистратура, колледж';
+			break;
+			case 'correspondence-1': 
+			heading = 'Заочное 1';
+			break;
+			case 'correspondence-2': 
+				heading = 'Заочное 2';	
+			break;
+			case 'teachers': 
+				heading = 'Преподаватели';
+			break;
+			case 'audience-schedule': 
+				heading = 'Расписание аудиторий';
+			break;
+			case 'free-audiences': 
+				heading = 'Свободные аудитории';	
+			break;
+		}
+		tableWindow.create('list', heading);
 	});
 }
