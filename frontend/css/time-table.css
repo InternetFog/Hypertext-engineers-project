@@ -69,6 +69,8 @@ a.history-brash-item:active {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	background: var(--color-white);
+	border-radius: 10px;
 }
 
 .time-table-block iframe {
@@ -89,6 +91,7 @@ a.history-brash-item:active {
 }
 
 .time-table-content-block {
+	height: calc(100% - var(--font-size-heading) - 35px);
 	overflow: auto;
 	position: relative;
 }
