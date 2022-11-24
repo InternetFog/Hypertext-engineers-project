@@ -45,6 +45,16 @@
     .date-download{
         margin-top: 15px;
     }
+    .time-table-radio-box-item{
+        width: 25px;
+        height: 23px;
+    }
+    .time-table-radio-box-item:not(:last-child)::after{
+        height: 19px;
+    }
+    .time-table-main-menu{
+        width: 100%;
+    }
 }
 @media (max-width:420px){
     .time-table-content-bkock_week-wrapper{
@@ -57,3 +67,9 @@
         margin-bottom: 0;
     }
 }
+@media (max-width:380px){
+    .time-table-main-menu{
+        width: 90%;
+    }
+}
+
