@@ -7,6 +7,9 @@
     display: flex;
     justify-content: center;
 }
+*{
+    box-sizing: border-box;
+}
 .time-table-content-bkock_week-wrapper{
     padding: 5px;
     display: flex;
@@ -35,6 +38,9 @@
 .week-wrapper_about-style.active{
     background: var(--color-esstu-cyan-light-d);
 }
+
+/* schedule_block_time_number   обёртка блок расписание*/
+
 .schedule-wrap_day-head-block{
     padding: 8px 25px;
     background: #fff;
@@ -53,4 +59,164 @@
 }
 .schedule-wrap_day-head-block.active .schedule-wrap_day-head-block_hide-arr{
     opacity: 1;
+}
+.schedule-wrap_day_schedule{
+    padding: 60px 5px;
+    background: var(--color-gray-f);
+}
+/* Если есть пары добавляется ксласс active (start)*/
+
+
+
+.schedule-wrap_day_schedule_block{
+    display: flex;
+    padding: 5px 20px;
+    min-height: 75px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.lesson-style{
+    width: 130px;
+}
+.lesson-style p{
+    width: 130px;
+}
+.schedule-wrap_day_schedule_block:last-child{
+    margin-bottom: 0;
+}
+.schedule-wrap_day_schedule_block.active{
+    background: #fff;
+    border: 1px solid var(--color-esstu-cyan-light-d);
+}
+.schedule-wrap_day_schedule_block.active .scheldule_block_lesson-wrapp_content{
+    display: block;
+}
+.scheldule_block-about{
+    display: flex;
+    align-items: center;
+    border-left: none;
+}
+
+.schedule-wrap_day_schedule_block.active .scheldule_block-about{
+    border-left: 1px solid var(--color-esstu-cyan-light-d);
+}
+.schedule-wrap_day_schedule_block.change .change-btn { 
+    display: block;
+    display: flex;
+}
+.scheldule_block_lesson-wrapp_content{
+    padding-left: 15px;
+}
+.scheldule_block_lesson-wrapp_content p{
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    color: var(--color-gray-5);
+}
+
+.scheldule_block_link-name a{
+    color: var(--color-esstu-cyan);
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.group-wrapper-text{
+    color: var(--color-gray-5);
+    font-size: 14px;
+    font-size: 400px;
+}
+.change-btn {
+    cursor: pointer;
+    color: var(--color-esstu-cyan);
+    font-size: 15px;
+    font-weight: 400;
+    align-items: center;
+    display: none;
+}
+.about-content-wrapper{
+    display: none;
+    justify-content: space-between;
+    margin: 0px 15px;
+}
+.schedule-wrap_day_schedule_block.active .about-content-wrapper{
+    display: block;
+    display: flex;
+}
+
+/* Если есть пары добавляется ксласс active (end)*/
+
+.scheldule_block_link-name{
+    width: 130px;
+    margin-left: 15px;
+}
+
+.schedule_block_time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.schedule_block_time div{
+    display: block;
+}
+.schedule_block_time_number{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-esstu-cyan-light-c);
+    color: var(--color-gray-5);
+    font-size: 15px;
+    text-align: center;
+    padding-top: 3px;
+    margin-right: 16px;
+    font-weight: 700;
+}
+
+/* schedule_block_time_clock-wrap  расписание пары*/
+
+.schedule_block_time{
+    width: 85px;
+}
+
+.schedule_block_time_clock-wrap{
+    display: block;
+}
+.schedule_block_time_clock-wrap span{
+    color: var(--color-gray-5);
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: block;
+}
+.schedule_block_time_clock-wrap span:last-child{
+    margin-bottom: 0;
+}
+.schedule_block_time_number.active{
+    background: #FFBEA2;
+}
+
+/* блок воставновить */
+
+.remote-block{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 16px;
+    padding-left: 15px;
+    border-left: 1px solid var(--color-esstu-cyan-light-d);
+}
+
+.remote-block p{
+    color: var(--color-gray-9);
+    font-weight: 300;
+    font-size: 14px;
+}
+.remote-block button{
+    border: none;
+    cursor: pointer;
+    color:var(--color-esstu-cyan);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 7px 20px;
+    border-radius: 50px;
+    background: var(--color-esstu-cyan-light-c);
 }
