@@ -1,11 +1,51 @@
+/* ----------------------------------------- Блок доп. информации ---------------------------------------- */
+.additional-data-block {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	max-width: var(--max-width-content-block);
+	padding: 30px 0;
+}
 
+.additional-data-block {
+	display: flex;
+	align-items: center;
+}
 
+.history-brash-item {
+	color: var(--color-esstu-cyan-dark);
+	font-size: var(--font-size-content-big);
+	transition: 100ms;
+}
+
+a.history-brash-item {
+	padding: 5px 15px 4px 15px;
+	border-radius: 5px;
+	background: var(--color-esstu-cyan-light-d);
+	text-decoration: none;
+}
+
+a.history-brash-item:active {
+	background: var(--color-esstu-cyan-light-c);
+}
+
+.history-brash-item:not(:first-child)::before {
+	content: "/";
+	padding: 0 5px;
+}
+
+.date-download {
+	color: var(--color-gray-9);
+	font-size: var(--font-size-content);
+}
 
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
 /* Небольшие мониторы */
 @media only screen and (max-width: 1460px) {
-
+	
 }
 
 @media only screen and (max-width: 1245px) {

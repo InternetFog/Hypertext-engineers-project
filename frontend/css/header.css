@@ -436,6 +436,25 @@
 
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
+/* Только мониторы */
+@media only screen and (min-width: 900px) {
+	/* ---------- Навигационное меню ----------- */
+	.main-navigation.bg-syan {
+		background: var(--color-esstu-cyan);
+	}
+	
+	.main-navigation.bg-syan > ul {
+		color: var(--color-white);
+	}
+	
+	.main-navigation.bg-syan > ul > li:hover > span,
+	.main-navigation.bg-syan > ul > li:focus > span  {
+		color: var(--color-esstu-cyan-dark);
+	}
+	
+}
+
+
 /* Небольшие мониторы */
 @media only screen and (max-width: 1460px) {
 	/* ---------- Навигационное меню ----------- */
