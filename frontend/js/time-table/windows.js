@@ -3,6 +3,57 @@ var tableWindow = {
 		left: document.querySelector(".time-table-block.left"),
 		right: document.querySelector(".time-table-block.right"),
 	},
+	create: function(structType) {
+		mainParent = document.createElement("div");
+		mainParent.classList.add("time-table-window");
+		switch(structType) {
+			case 'list':
+				mainParent.innerHTML = tableWindow.list.struct;
+				tableWindow.containers.left.append(mainParent);
+				tableWindow.list.dinamicUI();
+			break;
+			case 'table':
+				mainParent.innerHTML = tableWindow.table.struct;
+				tableWindow.containers.left.append(mainParent);
+				tableWindow.table.dinamicUI();
+			break;
+			case 'detailed':
+				tableWindow.closeLast(2);
+				mainParent.innerHTML = tableWindow.detailed.struct;
+				tableWindow.containers.right.append(mainParent);
+				tableWindow.detailed.dinamicUI();
+			break;
+		}
+	},
+	closeLast(tableNum) {
+		let lastWindow;
+		switch(tableNum) {
+			case 1: 
+				lastWindow = tableWindow.containers.left.querySelector('.time-table-window:last-child');
+			break;
+			case 2: 
+				lastWindow = tableWindow.containers.right.querySelector('.time-table-window:last-child');
+			break;
+		}
+		if(lastWindow && !lastWindow.classList.contains('is-main'))
+			lastWindow.remove();
+	},
+	RightTableHeadingUI: function() {
+		let timeTableHeadingBtn = document.querySelectorAll(".time-table-heading-btn.is-multiply");
+		for (let i = 0; i < timeTableHeadingBtn.length; i++) {
+			timeTableHeadingBtn[i].addEventListener("click", function() {
+				tableWindow.closeLast(2);
+			});
+		}
+	},
+	LeftTableHeadingUI: function() {
+		let timeTableHeadingBtn = document.querySelectorAll(".time-table-heading-btn.is-back");
+		for (let i = 0; i < timeTableHeadingBtn.length; i++) {
+			timeTableHeadingBtn[i].addEventListener("click", function() {
+				tableWindow.closeLast(1);
+			});
+		}
+	},
 	list: {
 		struct: `
 		<div class="time-table-heading-block">
@@ -77,16 +128,7 @@ var tableWindow = {
 		</div>
 		`,
 		dinamicUI: function() {
-			let timeTableHeadingBtn = document.querySelectorAll(".time-table-heading-btn");
-			for (let i = 0; i < timeTableHeadingBtn.length; i++) {
-				timeTableHeadingBtn[i].addEventListener("click", function() {
-					if(this.classList.contains('is-back')) {
-						tableWindow.closeLast(1);
-					} else if(this.classList.contains('is-close')) {
-						tableWindow.closeLast(2);
-					}
-				});
-			}
+			tableWindow.LeftTableHeadingUI();
 
 			let radioBoxBtns = document.querySelectorAll(".time-table-radio-box-item");
 			for (let i = 0; i < radioBoxBtns.length; i++) {
@@ -386,7 +428,14 @@ var tableWindow = {
 		</div>
 		`,
 		dinamicUI: function() {
-			return true;
+			tableWindow.LeftTableHeadingUI();
+
+			let tableItems = document.querySelectorAll(".schedule-wrap_day_schedule_block.active");
+			for (let i = 0; i < tableItems.length; i++) {
+				tableItems[i].addEventListener("click", function() {
+					tableWindow.create('detailed');
+				});
+			}
 		},
 	},
 	detailed: {
@@ -441,41 +490,19 @@ var tableWindow = {
 		</div>
 		`,
 		dinamicUI: function() {
-			return true;
+			tableWindow.RightTableHeadingUI();
+
+			let tableSwitcherItems = document.querySelectorAll(".week-wrapper_about-style.about-text-style");
+			for (let i = 0; i < tableSwitcherItems.length; i++) {
+				tableSwitcherItems[i].addEventListener("click", function() {
+					let tableSwitcherItemActive = document.querySelector(".week-wrapper_about-style.about-text-style.active");
+					if(tableSwitcherItemActive != null)
+						tableSwitcherItemActive.classList.remove('active');
+					this.classList.toggle('active');
+				});
+			}
 		},
 	},
-
-	create: function(structType) {
-		mainParent = document.createElement("div");
-		mainParent.classList.add("time-table-window");
-		switch(structType) {
-			case 'list':
-				mainParent.innerHTML = tableWindow.list.struct;
-				tableWindow.containers.left.append(mainParent);
-				tableWindow.list.dinamicUI();
-			break;
-			case 'table':
-				mainParent.innerHTML = tableWindow.table.struct;
-				tableWindow.containers.left.append(mainParent);
-				tableWindow.table.dinamicUI();
-			break;
-			case 'detailed':
-				mainParent.innerHTML = tableWindow.detailed.struct;
-				tableWindow.containers.right.append(mainParent);
-				tableWindow.detailed.dinamicUI();
-			break;
-		}
-	},
-	closeLast(tableNum) {
-		switch(tableNum) {
-			case 1: 
-				tableWindow.containers.left.querySelector('.time-table-window:last-child').remove();
-			break;
-			case 2: 
-				tableWindow.containers.right.querySelector('.time-table-window:last-child').remove();
-			break;
-		}
-	}
 }
 
 const timeTableMainMenu = document.querySelectorAll(".time-table-main-menu_btn.filled");
