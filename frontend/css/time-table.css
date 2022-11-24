@@ -82,8 +82,9 @@ a.history-brash-item:active {
 }
 
 .time-table-heading-block {
+	position: relative;
 	background: var(--color-esstu-cyan);
-	padding: 15px 10px;
+	padding: 15px;
 	border-radius: 8px 8px 0 0;
 }
 
@@ -91,6 +92,33 @@ a.history-brash-item:active {
 	text-align: center;
 	color: var(--color-white);
 	font-size: var(--font-size-heading);
+}
+
+.time-table-heading-btn {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+}
+
+.time-table-heading-btn svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 24px;
+	transition: 150ms;
+}
+
+.time-table-heading-btn.is-multiply:hover svg {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+
+.time-table-heading-btn svg path {
+	fill: var(--color-white);
 }
 
 .time-table-content-block {
@@ -307,6 +335,82 @@ a.history-brash-item:active {
 .time-table-list > li.opened ul {
 	display: block;
 }
+
+/* --------------------------------------- Окно заметок и доп. информации --------------------------------- */
+
+
+.time-table-editor {
+	padding: 25px;
+}
+
+.time-n-control-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* ------------------------- Время -------------------------- */
+.time-table-editor_time-block {
+	display: flex;
+	align-items: center;
+}
+
+.time-table-editor_time-block .number {
+	display: flex;
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	border-radius: 50%;
+	background: var(--color-esstu-cyan-light-c);
+}
+
+.time-table-editor_time-block .number span {
+	margin: auto;
+	color: var(--color-gray-5);
+	font-size: var(--font-size-content);
+	font-weight: 700;
+}
+
+.time-table-editor_time-block .time span {
+	color: var(--color-gray-5);
+	font-size: var(--font-size-content);
+}
+
+.time-table-editor_time-block .time span:last-child:before {
+	content: " - ";
+}
+
+/* ------------------------- Кнопки управления -------------------------- */
+.time-table-editor_control-block {
+	display: flex;
+}
+
+.time-table-editor_control-btn {
+	cursor: pointer;
+	position: relative;
+	width: 32px;
+	height: 32px;
+	margin-left: 5px;
+	border-radius: 50%;
+	background: var(--color-esstu-cyan-light-d);
+}
+
+.time-table-editor_control-btn svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 18px;
+}
+
+.time-table-editor_control-btn svg path {
+	fill: var(--color-esstu-cyan);
+}
+
+.time-table-editor_control-btn:active{
+	background: var(--color-esstu-cyan-light-c);
+}
+
 
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
