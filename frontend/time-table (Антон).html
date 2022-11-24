@@ -355,6 +355,10 @@
 
 							<!-- расписание -->
 
+							<!-- класс change для кнопки изменить. Добавлять клас change нужно к классу schedule-wrap_day_schedule_block-->
+							<!-- класс active для блоков где есть пары. Добавлять клас change нужно к классу schedule-wrap_day_schedule_block-->
+							<!-- класс remove для уже изменённых пар. Добавлять клас change нужно к классу schedule-wrap_day_schedule_block-->
+
 							<div class="schedule-wrap_day_schedule">
 								<div class="schedule-wrap_day_schedule_block active">
 									<div class="schedule_block_time">
@@ -387,7 +391,7 @@
 										(изм.)
 									</div>
 								</div>
-								<div class="schedule-wrap_day_schedule_block">
+								<div class="schedule-wrap_day_schedule_block remove">
 									<div class="schedule_block_time">
 										<div class="schedule_block_time_number">
 											2
@@ -457,7 +461,8 @@
 										(изм.)
 									</div>
 								</div>
-								<div class="schedule-wrap_day_schedule_block active change">
+								
+								<div class="schedule-wrap_day_schedule_block active change"> 
 									<div class="schedule_block_time">
 										<div class="schedule_block_time_number active">
 											4

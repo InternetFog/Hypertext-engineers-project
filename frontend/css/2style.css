@@ -142,6 +142,10 @@
     display: block;
     display: flex;
 }
+.schedule-wrap_day_schedule_block.remove .remote-block{
+    display: block;
+    display: flex;
+}
 
 /* Если есть пары добавляется ксласс active (end)*/
 
@@ -195,8 +199,9 @@
 
 /* блок воставновить */
 
+
 .remote-block{
-    display: flex;
+    display: none;
     width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -219,4 +224,8 @@
     padding: 7px 20px;
     border-radius: 50px;
     background: var(--color-esstu-cyan-light-c);
+}
+.schedule-wrap_day_schedule_block.remove .remote-block{
+    display: block;
+    display: flex;
 }
