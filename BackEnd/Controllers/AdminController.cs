@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
 using Timetable_Backend.Models;
 
 namespace Timetable_Backend.Controllers
@@ -67,7 +69,25 @@ namespace Timetable_Backend.Controllers
 
         private struct Leson_Data
         {
+            public static int Next_ID = 0;
+            public int ID;
+            public string Teacher;
+            public string Type;
+            public string Audience;
+            public int Day;
+            public int Time;
+            public string Title;
 
+            public Leson_Data(string type, int day, int time, string title, string teacher = "", string audience = "")
+            {
+                ID = Next_ID++;
+                Teacher = teacher;
+                Type = type;
+                Audience = audience;
+                Day = day;
+                Time = time;
+                Title = title;
+            }
         }
         private struct Group_Data
         {
@@ -132,8 +152,8 @@ namespace Timetable_Backend.Controllers
             return responseString.Replace("\r", "").Replace("\t", "");
         }
 
-        [HttpPut("Parce")]
-        public string Parce([FromBody] Admin admin)
+        [HttpPut("Parce/Teachers")]
+        public string ParceTeachers([FromBody] Admin admin)
         {
             string query = $"select admin_login, admin_password, parsing_now from info";
             using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
@@ -155,23 +175,46 @@ namespace Timetable_Backend.Controllers
                 }
             }
 
-            Start_Parsing();
+            Clear_Table("Official_Leson");
+
+
+            Clear_Table("\"Group\"");
+            Clear_Table("Audience");
+            Clear_Table("Building");
+
+
+            Clear_Table("teacher");
+            Clear_Table("department");
+            Clear_Table("faculty");
+
+            new Thread(Teacher_Parsing_Process).Start(T_MKD_URI);
+            //new Thread(Teacher_Parsing_Process).Start(BS_URI);
 
             return "Parsing...";
         }
 
-        private void Start_Parsing()
+        [HttpPut("Parce/Students")]
+        public string ParceStudents([FromBody] Admin admin)
         {
-            /*
-            string query = $"update info set parsing_now = 'True'";
+            string query = $"select admin_login, admin_password, parsing_now from info";
             using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
             using (var command = new SqlCommand(query, connection))
             {
                 connection.Open();
-                command.ExecuteNonQuery();
-
+                using var reader = command.ExecuteReader();
+                reader.Read();
+                Admin sender = new()
+                {
+                    Login = (string)reader[0],
+                    Password = (string)reader[1]
+                };
+                if (sender != admin)
+                    return "Wrong login or password!";
+                if ((bool)reader[2])
+                {
+                    return "Just parsing now!";
+                }
             }
-            */
 
             Clear_Table("Official_Leson");
 
@@ -181,18 +224,10 @@ namespace Timetable_Backend.Controllers
             Clear_Table("Building");
 
 
-            /*
-            Clear_Table("teacher");
-            Clear_Table("department");
-            Clear_Table("faculty");
-
-            new Thread(Teacher_Parsing_Process).Start(T_MKD_URI);
-            */
-
-
-            new Thread(Student_Parsing_Process).Start(new Parse_Data {
-                URI = MKD_URI, 
-                Timetable = 0 
+            new Thread(Student_Parsing_Process).Start(new Parse_Data
+            {
+                URI = MKD_URI,
+                Timetable = 0
             });
 
             /*
@@ -212,6 +247,8 @@ namespace Timetable_Backend.Controllers
                 Timetable_Title = "Бакалавриат, специалитет"
             });
 
+
+            // Не лезь, оно тебя сожрёт!
             new Thread(Parsing_Process).Start(new Parse_Data
             {
                 URI = ZO1_URI,
@@ -227,6 +264,24 @@ namespace Timetable_Backend.Controllers
             });
 
             */
+
+            return "Parsing...";
+        }
+
+        private void Start_Parsing()
+        {
+            /*
+            string query = $"update info set parsing_now = 'True'";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            */
+
+
         }
 
         private void Clear_Table(string table_name)
@@ -320,9 +375,189 @@ namespace Timetable_Backend.Controllers
             return groups.Select(g => g.ID).ToArray();
         }
 
-        private void Add_Lesons(string data)
+        private Leson_Data Parse_Leson(string data, int day, int time, int week)
+        {
+            string leson = data.ToString();
+            string[] lesons = leson.Split(" а.");
+
+            string first_c = leson.Substring(0, 1);
+            string type = "пр";
+            if (first_c != first_c.ToUpper())
+            {
+                type = leson.Split('.')[0];
+                leson = leson.Substring(type.Length + 1);
+            }
+            if (lesons.Length == 2)
+            {
+                string audience = "а." + lesons[1];
+                leson = leson.Replace(audience, "").Trim();
+
+                string teacher;
+                if (leson.Last() == '.')
+                    teacher = string.Join(" ", leson.Split(" ").TakeLast(2));
+                else
+                    teacher = leson.Split(" ").Last();
+                leson = leson.Replace(teacher, "").Trim();
+                
+                if (leson.Split(" ").Last() == "ФКС")
+                {
+                    teacher = "ФКС " + teacher;
+                    leson = leson.Replace("ФКС", "");
+                }
+
+
+                return new Leson_Data(type, day + 6 * week, time, leson, teacher, audience);
+            }
+            return new Leson_Data(type, day + 6 * week, time, leson);
+        }
+
+        private Leson_Data[] Parse_Lesons(string[] data, int week)
+        {
+            List<Leson_Data> lesons = new List<Leson_Data>();
+            for (int day = 0; day < 6; day++)
+                for (int time = 0; time < 6; time++)
+                {
+                    string leson = data[time + 6 * day].Trim();
+                    if (leson != "")
+                    {
+                        Leson_Data parsed_leson = Parse_Leson(leson, day, time, week);
+                        lesons.Add(parsed_leson);
+                    }
+                }
+
+            return lesons.ToArray();
+        }
+
+        private void Add_Unparsed_Lesons(Leson_Data[] data)
         {
 
+        }
+
+        private int Get_Teacher_ID(string name)
+        {
+            string query = $"select id from teacher where name = '{name}'";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                var value = command.ExecuteScalar();
+                if (value is DBNull || value is null)
+                    return -1;
+                return (int)value;
+            }
+        }
+
+        private int Get_Last_ID(string table)
+        {
+            string query = $"select max(id) from {table}";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                var result = command.ExecuteScalar();
+                if (result is DBNull)
+                    return 0;
+                return (int)result + 1;
+            }
+        }
+
+        private int Add_Type(string name)
+        {
+            int max_id = Get_Last_ID("Leson_Type");
+            string query = $"insert into Leson_Type values ({max_id}, '{name}', 0)";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return max_id;
+            }
+        }
+
+        private int Get_Type_ID(string type)
+        {
+            string query = $"select id from Leson_Type where title = '{type}'";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                var result = command.ExecuteScalar();
+                if (result is DBNull || result is null)
+                    return Add_Type(type);
+                return (int)result;
+            }
+        }
+
+        private int Add_Audience(string audience)
+        {
+            int max_id = Get_Last_ID("Audience");
+            string query = $"insert into Audience (ID, Title) values ({max_id}, '{audience}')";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return max_id;
+            }
+        }
+
+        private int Get_Audience_ID(string audience)
+        {
+            string query = $"select id from Audience where title = '{audience}'";
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                var result = command.ExecuteScalar();
+                if (result is DBNull || result is null)
+                    return Add_Audience(audience);
+                return (int)result;
+            }
+        }
+
+        private void Add_Lesons(string data, int group)
+        {
+            var first_rows = data.Split("\n")
+                .Where(r => r.StartsWith("<FONT FACE=\"Arial\" SIZE=1><P ALIGN=\"CENTER\">"))
+                .Select(r => r
+                    .Replace("<FONT FACE=\"Arial\" SIZE=1><P ALIGN=\"CENTER\">", "")
+                    .Replace("</FONT></TD>", "")
+                )
+                .Where(r => r != "     ")
+                .Select(r => r.Contains('_') ? "" : r)
+                .ToArray();
+
+            var second_rows = data.Split("\n")
+                .Where(r => r.StartsWith("<FONT FACE=\"Arial\" SIZE=1 COLOR=\"#0000ff\"><P ALIGN=\"CENTER\">"))
+                .Select(r => r
+                    .Replace("<FONT FACE=\"Arial\" SIZE=1 COLOR=\"#0000ff\"><P ALIGN=\"CENTER\">", "")
+                    .Replace("</FONT></TD>", "")
+                )
+                .Where(r => r != "     ")
+                .Select(r => r.Contains('_') ? "" : r)
+                .ToArray();
+
+
+            List<Leson_Data> lesons = Parse_Lesons(first_rows, 0).Concat(Parse_Lesons(second_rows, 1)).ToList();
+            var unparsed_lesons = lesons.Where(l => Get_Teacher_ID(l.Teacher) == -1).ToArray();
+
+            if (unparsed_lesons.Length > 0)
+            {
+                Add_Unparsed_Lesons(unparsed_lesons);
+                lesons = lesons.Where(l => unparsed_lesons.Any(ul => ul.ID == l.ID) == false).ToList();
+            }
+
+            string query = $"insert into Official_Leson values " +
+                string.Join(",\n", lesons.Select(l => $"(" +
+                $"{l.ID}, {Get_Teacher_ID(l.Teacher)}, {Get_Type_ID(l.Type)}, " +
+                $"{Get_Audience_ID(l.Audience)}, {l.Day}, {l.Time}, {group}, '{l.Title}')"));
+            Debug.WriteLine(query);
+            using (var connection = new SqlConnection(_config.GetConnectionString("cs")))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         private void Parse_Students(string uri, int timetable)
@@ -330,7 +565,7 @@ namespace Timetable_Backend.Controllers
             var groups = Add_Groups(uri, timetable);
             foreach (var group in groups)
             {
-                Add_Lesons(CallUrl(Timetable_URI(group, timetable)).Result);
+                Add_Lesons(CallUrl(Timetable_URI(group, timetable)).Result, group);
             }
         }
 
