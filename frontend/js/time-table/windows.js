@@ -100,8 +100,11 @@ var tableWindow = {
 			for (let i = 0; i < listItems.length; i++) {
 				listItems[i].addEventListener("click", function() {
 					let opeledItem = document.querySelector(".time-table-list li.opened");
-					if(opeledItem != null) opeledItem.classList.remove('opened');
+					if(opeledItem != null) 
+						opeledItem.classList.remove('opened');
 					this.classList.toggle('opened');
+					if(this.querySelector("ul") == null) 
+						tableWindow.create('table');
 				});
 			}
 		},
