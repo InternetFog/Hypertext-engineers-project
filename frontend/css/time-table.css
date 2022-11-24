@@ -193,6 +193,121 @@ a.history-brash-item:active {
 	fill: var(--color-esstu-cyan);
 }
 
+
+/* --------------- Чекбоксы расписаня -------------- */
+.time-table-radio-box-block {
+	display: flex;
+	align-items: center;
+	padding: 0 25px;
+	margin-bottom: 30px;
+}
+
+.time-table-radio-box_heading {
+	color: var(--color-esstu-cyan);
+	font-size: var(--font-size-content-big);
+	font-weight: 700;
+}
+
+.time-table-radio-box {
+	display: flex;
+	margin-left: 15px;
+	border: 2px solid var(--color-esstu-cyan);
+	border-radius: 5px;
+}
+
+.time-table-radio-box-item {
+	cursor: pointer;
+	position: relative;
+	width: 37px;
+	height: 35px;
+	margin-left: -2px;
+	color: var(--color-black);
+}
+
+.time-table-radio-box-item.checked:first-child {
+	border-radius: 5px 0 0 5px;
+}
+
+
+.time-table-radio-box-item.checked:last-child {
+	border-radius: 0 5px 5px 0;
+}
+
+.time-table-radio-box-item.checked {
+	color: var(--color-white);
+	background: var(--color-esstu-cyan);
+}
+
+.time-table-radio-box-item:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	height: 30px;
+	border-left: 2px solid var(--color-esstu-cyan);
+}
+
+.time-table-radio-box-item span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+/* --------------- Списки расписаня -------------- */
+.time-table-list-block {
+	padding: 0 15px;
+	margin-bottom: 30px;
+}
+
+.time-table-list-block-heading {
+	color: var(--color-esstu-cyan);
+	font-size: var(--font-size-content-big);
+	font-weight: 700;
+	margin-left: 10px;
+}
+
+.time-table-list {
+	margin-top: 8px;
+}
+
+.time-table-list li {
+	list-style-type: none;
+	margin-bottom: 1px;
+}
+
+.time-table-list li span {
+	cursor: pointer;
+	display: block;
+	padding: 3px 10px;
+	border-radius: 3px;
+	color: var(--color-esstu-cyan);
+	font-size: var(--font-size-content);
+	transition: 100ms;
+}
+
+.time-table-list li span:hover {
+	background: var(--color-esstu-cyan-light-e);
+}
+
+.time-table-list li span:active {
+	background: var(--color-esstu-cyan-light-d);
+}
+
+.time-table-list > li > ul {
+	display: none;
+	margin: 2px 0 5px 15px;
+	padding-left: 2px;
+	border-left: 2px solid var(--color-esstu-cyan-grey);
+}
+
+.time-table-list > li.opened ul {
+	display: block;
+}
+
 /* ----------------------------------------- Адаптация ---------------------------------------- */
 
 /* Небольшие мониторы */
