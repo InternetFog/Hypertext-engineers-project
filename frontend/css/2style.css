@@ -142,10 +142,6 @@
     display: block;
     display: flex;
 }
-.schedule-wrap_day_schedule_block.remove .remote-block{
-    display: block;
-    display: flex;
-}
 
 /* Если есть пары добавляется ксласс active (end)*/
 

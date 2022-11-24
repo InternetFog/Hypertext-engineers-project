@@ -1,0 +1,75 @@
+@media (max-width:1150px){
+    .time-table-heading-block-map{
+        display:none;
+    }
+    .time-table-block-right{
+        display: none;
+    }
+}
+@media (max-width:900px){
+    .time-table-wrapper{
+        justify-content: center;
+    }
+    .time-table-block{
+        width: 90%;
+    }
+    .time-table-block:first-of-type{
+        margin-right: 0;
+    }
+}
+
+/* cdsdc */
+
+@media (max-width:625px){
+    .schedule-wrap_day_schedule_block.active .about-content-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    .scheldule_block_lesson-wrapp_content{
+
+    }
+    .scheldule_block_link-name{
+        margin-left: 0;
+    }
+}
+@media (max-width:475px){
+    .schedule-wrap_day_schedule_block.remove .remote-block{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .additional-data-block{
+        flex-direction: column;
+        align-items: inherit;
+        padding-left: 20px;
+    }
+    .date-download{
+        margin-top: 15px;
+    }
+    .time-table-radio-box-item{
+        width: 25px;
+        height: 23px;
+    }
+    .time-table-radio-box-item:not(:last-child)::after{
+        height: 19px;
+    }
+    .time-table-main-menu{
+        width: 100%;
+    }
+}
+@media (max-width:420px){
+    .time-table-content-bkock_week-wrapper{
+        flex-direction: column;
+    }
+    .week-wrapper_about-style{
+        margin-bottom: 5px;
+    }
+    .week-wrapper_about-style:last-child{
+        margin-bottom: 0;
+    }
+}
+@media (max-width:380px){
+    .time-table-main-menu{
+        width: 90%;
+    }
+}
+
