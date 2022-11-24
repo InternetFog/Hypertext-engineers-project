@@ -1,0 +1,8 @@
+.time-table-heading-block_arrow-left{
+    width: 24px;
+    position: absolute;
+}
+.time-table-heading{
+    display: flex;
+    justify-content: center;
+}
