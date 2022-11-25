@@ -1,3 +1,3 @@
-var ListConstructor = {
-	
+function ListConstructor() {
+	let struct = xhttp.onreadystatechange();
 }
