@@ -16,6 +16,9 @@
     .time-table-block:first-of-type{
         margin-right: 0;
     }
+	 .time-table-block.right{
+		display: none;
+	 }
 }
 
 /* cdsdc */
