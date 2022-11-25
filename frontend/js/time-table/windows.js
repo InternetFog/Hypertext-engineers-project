@@ -10,7 +10,21 @@ var tableWindow = {
 			case 'list':
 				mainParent.innerHTML = tableWindow.list.struct;
 				mainParent.querySelector('.time-table-heading').append(heading);
-
+				mainParent.querySelector('.time-table-search-input').setAttribute('placeholder', param3);
+				let radioBoxBlock = mainParent.querySelector('.time-table-radio-box-block');
+				if(param4 > 0) {			
+					radioBoxBlock.innerHTML = '<span class="time-table-radio-box_heading">Курс</span><div class="time-table-radio-box"></div>';
+					radioBoxBlock = radioBoxBlock.querySelector('.time-table-radio-box');
+					let curInnerHTML = '';
+					for(let i = 1; i <= param4; i++) {
+						if(i == 1) {
+							radioBoxBlock.innerHTML = curInnerHTML + `<div class="time-table-radio-box-item checked"><span>${i}</span></div>`;
+						} else {
+							radioBoxBlock.innerHTML = curInnerHTML + `<div class="time-table-radio-box-item"><span>${i}</span></div>`;
+						}
+						curInnerHTML = radioBoxBlock.innerHTML;
+					}
+				}
 				tableWindow.containers.left.append(mainParent);
 				tableWindow.list.dinamicUI();
 			break;
@@ -71,17 +85,7 @@ var tableWindow = {
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
 				</div>
 			</div>
-			<div class="time-table-radio-box-block">
-				<span class="time-table-radio-box_heading">Курс</span>
-				<div class="time-table-radio-box">
-					<div class="time-table-radio-box-item checked"><span>1</span></div>
-					<div class="time-table-radio-box-item"><span>2</span></div>
-					<div class="time-table-radio-box-item"><span>3</span></div>
-					<div class="time-table-radio-box-item"><span>4</span></div>
-					<div class="time-table-radio-box-item"><span>5</span></div>
-					<div class="time-table-radio-box-item"><span>6</span></div>
-				</div>
-			</div>
+			<div class="time-table-radio-box-block"></div>
 			<div class="time-table-list-block">
 				<span class="time-table-list-block-heading">Факультет</span>
 				<ul class="time-table-list">
@@ -522,29 +526,45 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 	timeTableMainMenu[i].addEventListener("click", function() {
 		let tableBtnRole = this.getAttribute('table-btn-role');
 		let heading;
+		let placeholder;
+		let switcher;
 		switch(tableBtnRole) {
 			case 'bachelor': 
 				heading = 'Бакалавриат, специалитет';
+				placeholder = 'Номер группы';
+				switcher = 6;
 			break;
 			case 'magistracy': 
 				heading = 'Магистратура, колледж';
+				placeholder = 'Номер группы';
+				switcher = 6;
 			break;
 			case 'correspondence-1': 
-			heading = 'Заочное 1';
+				heading = 'Заочное 1';
+				placeholder = 'Номер группы';
+				switcher = 6;
 			break;
 			case 'correspondence-2': 
 				heading = 'Заочное 2';	
+				placeholder = 'Номер группы';
+				switcher = 6;
 			break;
 			case 'teachers': 
 				heading = 'Преподаватели';
+				placeholder = 'Фамилия И.О.';
+				switcher = 0;
 			break;
 			case 'audience-schedule': 
 				heading = 'Расписание аудиторий';
+				placeholder = 'Номер аудитории';
+				switcher = 0;
 			break;
 			case 'free-audiences': 
 				heading = 'Свободные аудитории';	
+				placeholder = 'Номер корпуса';
+				switcher = 0;
 			break;
 		}
-		tableWindow.create('list', heading);
+		tableWindow.create('list', heading, placeholder, switcher);
 	});
 }
