@@ -1,3 +1,44 @@
+class Group {
+    Title
+    Cource
+}
+
+class GetLeson {
+    ID
+    GroupTitle
+    Day
+    Week
+    Time_Title
+    TimeStart
+    TimeEnd
+    Type
+    Title
+    Teacher
+    Department
+    Audience
+}
+
+class Teacher {
+    ID
+    Faculty
+    Department_Title
+    Name
+}
+
+class TeacherLeson {
+    ID
+    GroupTitle
+    Day
+    Week
+    Time_Title
+    TimeStart
+    TimeEnd
+    Type
+    Title
+    Teacher
+    Department
+    Audience
+}
 
 addr = "https://localhost:7088/api"
 
@@ -7,7 +48,7 @@ function UpdateDate() {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            return xhttp.responseText;
+            return JSON.parse(xhttp.responseText);
         } else {
             console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
         }
@@ -38,8 +79,12 @@ function GetGroups(course, type) {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            return xhttp.responseText;
-        }else {
+            let json = JSON.parse(xhttp.responseText);
+            let str = "<ul>"
+            for(let i = 0; i < json.length; i++)
+                str += <li>json[i].title</li>
+            return (str + "</ul>")
+        } else {
             console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
         }
     }
@@ -80,6 +125,23 @@ function GetTeacher(faculty_ID) {
     }
 }
 
+function GetTeacher() {
+
+    let xhttp = new XMLHttpRequest()
+
+    xhttp.open("GET", addr + "/Teacher", true)
+    xhttp.send()
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let json = JSON.parse(xhttp.responseText);
+
+        } else {
+            console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
+        }
+    }
+}
+
 /**
  * @description Запрос списка групп по курсу и типу
  * @param groupTitle Тип-String
@@ -96,7 +158,7 @@ function GetGroupLesson(groupTitle) {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             return xhttp.responseText;
-        }else {
+        } else {
             console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
         }
     }
@@ -118,7 +180,7 @@ function GetTeachersLesson(teacherName) {
             arr = xhttp.responseText
             arr = arr["name"].sort()
             return arr;
-        }else {
+        } else {
             console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
         }
     }
