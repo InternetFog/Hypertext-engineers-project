@@ -27,7 +27,9 @@ var tableWindow = {
 				}
 				if(param5) {
 					let listBlock = mainParent.querySelector('.time-table-list-block');
-					listBlock.innerHTML = teachersList();
+					listBlock.innerHTML = param5;
+				} else {
+						
 				}
 				tableWindow.containers.left.append(mainParent);
 				tableWindow.list.dinamicUI();
@@ -90,7 +92,9 @@ var tableWindow = {
 				</div>
 			</div>
 			<div class="time-table-radio-box-block"></div>
-			<div class="time-table-list-block"></div>
+			<div class="time-table-list-block">
+				<p>Ошибка. Не удалось загрузить список.</p>
+			</div>
 		</div>
 		`,
 		dinamicUI: function() {
@@ -129,7 +133,7 @@ var tableWindow = {
 		</div>
 		<div class="time-table-content-block">
 			<div class="time-table-content-bkock_week-wrapper">
-				<div class="week-wrapper_about-style about-text-style active ">
+				<div class="week-wrapper_about-style about-text-style active">
 					<span>1 Неделя (текущая)</span>
 				</div>
 				<div class="week-wrapper_about-style about-text-style">
@@ -137,8 +141,8 @@ var tableWindow = {
 				</div>
 			</div>
 			<div class="time-table-content-block_schedule-wrap">
-				<div class="schedule-wrap_day">
-					<div class="schedule-wrap_day-head-block active">
+				<div class="schedule-wrap_day active">
+					<div class="schedule-wrap_day-head-block">
 						<p class="about-text-style">Понедельник</p>
 						<div class="schedule-wrap_day-head-block_hide-arr">
 							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="7.111" viewBox="0 0 12 7.111">
@@ -349,6 +353,199 @@ var tableWindow = {
 							</svg>									  
 						</div>
 					</div>
+					<div class="schedule-wrap_day_schedule">
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">1</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>9:00</span>
+									<span>10:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">(изм.)</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block remove">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">2</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>10:45</span>
+									<span>12:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+
+							<!-- блок востановить -->
+
+							<div class="remote-block">
+								<p>Вы отменили пару</p>
+								<button>Восстановить</button>
+							</div>
+						</div>
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									3
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>13:00</span>
+									<span>14:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						
+						<div class="schedule-wrap_day_schedule_block active change"> 
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number active">
+									4
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>14:45</span>
+									<span>16:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									5
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>16:25</span>
+									<span>18:00</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									6
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>18:05</span>
+									<span>19:40</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+								<div class="change-btn">
+									(изм.)
+								</div>										
+						</div>
+					</div>
 				</div>
 				<div class="schedule-wrap_day">
 					<div class="schedule-wrap_day-head-block">
@@ -357,6 +554,199 @@ var tableWindow = {
 							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="7.111" viewBox="0 0 12 7.111">
 								<path id="angle-down" d="M18.417,9.21a1.138,1.138,0,0,0-1.605,0l-4.087,4.03L8.7,9.21a1.139,1.139,0,1,0-1.605,1.616l4.827,4.827a1.138,1.138,0,0,0,1.616,0l4.884-4.827a1.138,1.138,0,0,0,0-1.616Z" transform="translate(18.754 15.99) rotate(180)" fill="#138c9d"/>
 							</svg>									  
+						</div>
+					</div>
+					<div class="schedule-wrap_day_schedule">
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">1</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>9:00</span>
+									<span>10:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">(изм.)</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block remove">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">2</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>10:45</span>
+									<span>12:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+
+							<!-- блок востановить -->
+
+							<div class="remote-block">
+								<p>Вы отменили пару</p>
+								<button>Восстановить</button>
+							</div>
+						</div>
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									3
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>13:00</span>
+									<span>14:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						
+						<div class="schedule-wrap_day_schedule_block active change"> 
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number active">
+									4
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>14:45</span>
+									<span>16:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									5
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>16:25</span>
+									<span>18:00</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									6
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>18:05</span>
+									<span>19:40</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+								<div class="change-btn">
+									(изм.)
+								</div>										
 						</div>
 					</div>
 				</div>
@@ -369,6 +759,199 @@ var tableWindow = {
 							</svg>									  
 						</div>
 					</div>
+					<div class="schedule-wrap_day_schedule">
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">1</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>9:00</span>
+									<span>10:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">(изм.)</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block remove">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">2</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>10:45</span>
+									<span>12:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+
+							<!-- блок востановить -->
+
+							<div class="remote-block">
+								<p>Вы отменили пару</p>
+								<button>Восстановить</button>
+							</div>
+						</div>
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									3
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>13:00</span>
+									<span>14:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						
+						<div class="schedule-wrap_day_schedule_block active change"> 
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number active">
+									4
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>14:45</span>
+									<span>16:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									5
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>16:25</span>
+									<span>18:00</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									6
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>18:05</span>
+									<span>19:40</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+								<div class="change-btn">
+									(изм.)
+								</div>										
+						</div>
+					</div>
 				</div>
 				<div class="schedule-wrap_day">
 					<div class="schedule-wrap_day-head-block">
@@ -379,6 +962,199 @@ var tableWindow = {
 							</svg>									  
 						</div>
 					</div>
+					<div class="schedule-wrap_day_schedule">
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">1</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>9:00</span>
+									<span>10:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">(изм.)</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block remove">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">2</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>10:45</span>
+									<span>12:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+
+							<!-- блок востановить -->
+
+							<div class="remote-block">
+								<p>Вы отменили пару</p>
+								<button>Восстановить</button>
+							</div>
+						</div>
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									3
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>13:00</span>
+									<span>14:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						
+						<div class="schedule-wrap_day_schedule_block active change"> 
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number active">
+									4
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>14:45</span>
+									<span>16:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									5
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>16:25</span>
+									<span>18:00</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									6
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>18:05</span>
+									<span>19:40</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+								<div class="change-btn">
+									(изм.)
+								</div>										
+						</div>
+					</div>
 				</div>
 				<div class="schedule-wrap_day">
 					<div class="schedule-wrap_day-head-block">
@@ -387,6 +1163,199 @@ var tableWindow = {
 							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="7.111" viewBox="0 0 12 7.111">
 								<path id="angle-down" d="M18.417,9.21a1.138,1.138,0,0,0-1.605,0l-4.087,4.03L8.7,9.21a1.139,1.139,0,1,0-1.605,1.616l4.827,4.827a1.138,1.138,0,0,0,1.616,0l4.884-4.827a1.138,1.138,0,0,0,0-1.616Z" transform="translate(18.754 15.99) rotate(180)" fill="#138c9d"/>
 							</svg>									  
+						</div>
+					</div>
+					<div class="schedule-wrap_day_schedule">
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">1</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>9:00</span>
+									<span>10:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">(изм.)</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block remove">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">2</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>10:45</span>
+									<span>12:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+
+							<!-- блок востановить -->
+
+							<div class="remote-block">
+								<p>Вы отменили пару</p>
+								<button>Восстановить</button>
+							</div>
+						</div>
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									3
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>13:00</span>
+									<span>14:35</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						
+						<div class="schedule-wrap_day_schedule_block active change"> 
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number active">
+									4
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>14:45</span>
+									<span>16:20</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+						<div class="schedule-wrap_day_schedule_block">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									5
+								</div>
+								<div class="schedule_block_time_clock-wrap">
+									<span>16:25</span>
+									<span>18:00</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+							<div class="change-btn">
+								(изм.)
+							</div>
+						</div>
+
+
+						<div class="schedule-wrap_day_schedule_block active">
+							<div class="schedule_block_time">
+								<div class="schedule_block_time_number">
+									6
+								</div>
+								<div class="schedule_block_time_clock-wrap active">
+									<span>18:05</span>
+									<span>19:40</span>
+								</div>
+							</div>
+							<div class="about-content-wrapper">
+								<div class="scheldule_block_lesson-wrapp scheldule_block-about">
+									<div class="lesson-style scheldule_block_lesson-wrapp_content">
+										<p>лек.История</p>
+									</div>
+								</div>
+								<div class="scheldule_block_link-name scheldule_block-about">
+									<div class="scheldule_block_lesson-wrapp_content">
+										<a href="#">МАНШЕЕВ Д.М</a>
+									</div>
+								</div>
+								<div class="scheldule_block-about">
+									<div class="group-wrapper scheldule_block_lesson-wrapp_content">
+										<p class="group-wrapper-text">а.15-462</p>
+									</div>
+								</div>
+							</div>
+								<div class="change-btn">
+									(изм.)
+								</div>										
 						</div>
 					</div>
 				</div>
@@ -409,6 +1378,14 @@ var tableWindow = {
 					let tableSwitcherItemActive = document.querySelector(".week-wrapper_about-style.about-text-style.active");
 					if(tableSwitcherItemActive != null)
 						tableSwitcherItemActive.classList.remove('active');
+					this.classList.toggle('active');
+				});
+			}
+
+			let radioBoxBtns = document.querySelectorAll(".schedule-wrap_day");
+			for (let i = 0; i < radioBoxBtns.length; i++) {
+				radioBoxBtns[i].addEventListener("click", function() {
+					document.querySelector(".schedule-wrap_day.active").classList.remove('active');
 					this.classList.toggle('active');
 				});
 			}
@@ -499,6 +1476,7 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 				heading = 'Магистратура, колледж';
 				placeholder = 'Номер группы';
 				switcher = 6;
+				structList = groupList();
 			break;
 			case 'correspondence-1': 
 				heading = 'Заочное 1';
@@ -520,6 +1498,7 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 				heading = 'Расписание аудиторий';
 				placeholder = 'Номер аудитории';
 				switcher = 0;
+				structList = audList();
 			break;
 			case 'free-audiences': 
 				heading = 'Свободные аудитории';	

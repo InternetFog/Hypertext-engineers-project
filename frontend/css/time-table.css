@@ -227,13 +227,13 @@ a.history-brash-item:active {
 	display: flex;
 	align-items: center;
 	padding: 0 25px;
-	margin-bottom: 30px;
 }
 
 .time-table-radio-box_heading {
 	color: var(--color-esstu-cyan);
 	font-size: var(--font-size-content-big);
 	font-weight: 700;
+	margin-bottom: 30px;
 }
 
 .time-table-radio-box {
@@ -241,6 +241,7 @@ a.history-brash-item:active {
 	margin-left: 15px;
 	border: 2px solid var(--color-esstu-cyan);
 	border-radius: 5px;
+	margin-bottom: 30px;
 }
 
 .time-table-radio-box-item {
@@ -295,6 +296,12 @@ a.history-brash-item:active {
 	color: var(--color-esstu-cyan);
 	font-size: var(--font-size-content-big);
 	font-weight: 700;
+	margin-left: 10px;
+}
+
+.time-table-list-block p {
+	color: var(--color-black);
+	font-size: var(--font-size-content);
 	margin-left: 10px;
 }
 

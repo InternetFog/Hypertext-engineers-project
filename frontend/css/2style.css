@@ -44,7 +44,13 @@
 
 /* schedule_block_time_number   обёртка блок расписание*/
 
+.schedule-wrap_day:not(.active) .schedule-wrap_day_schedule {
+	display: none;
+}
+
+
 .schedule-wrap_day-head-block{
+	cursor: pointer;
     padding: 8px 25px;
     background: #fff;
     display: flex;
@@ -60,12 +66,13 @@
     justify-content: end;
     align-items: center;
 }
-.schedule-wrap_day-head-block.active .schedule-wrap_day-head-block_hide-arr{
+.schedule-wrap_day.active .schedule-wrap_day-head-block .schedule-wrap_day-head-block_hide-arr{
     opacity: 1;
 }
 .schedule-wrap_day_schedule{
     padding: 60px 5px;
     background: var(--color-gray-f);
+	 box-shadow: inset 0 0 6px #00596622;
 }
 /* Если есть пары добавляется ксласс active (start)*/
 
