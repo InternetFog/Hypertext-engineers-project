@@ -27,7 +27,7 @@ namespace TTB.Controllers
         public IEnumerable<GetLeson> Get(string GroupTitle)
         {
             GroupTitle = GroupTitle.Replace("%2F", "/");
-            string query = $"select wd.Title, wd.Week, wt.Title, wt.Start_Time, wt.End_Time,  les_t.Title, ol.Title, t.Name, d.Title, a.Title " +
+            string query = $"select wd.Title, wd.Week, wt.Title, wt.Start_Time, wt.End_Time,  les_t.Title, ol.Title, t.Name, d.Title, a.Title, Gp.Title " +
                $"from Official_Leson as ol " +
                $"left join Work_Day as wd on wd.Id = ol.Day_Id " +
                $"left join Work_time as wt on wt.Id = ol.Time_Id " +
@@ -60,7 +60,8 @@ namespace TTB.Controllers
                         Title = (string)reader[6],
                         Teacher = (string)reader[7],
                         Department = (string)reader[8],
-                        Audience = (string)reader[9]
+                        Audience = (string)reader[9],
+                        GroupTitle = (string)reader[10],
                     });
                 }
             }

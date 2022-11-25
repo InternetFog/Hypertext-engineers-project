@@ -29,6 +29,9 @@
     cursor: pointer;
     font-size: 17px;
 }
+.time-table-content-bkock_week-wrapper{
+    background: #fff;
+}
 .week-wrapper_about-style:last-child{
     margin-right: 0;
 }
