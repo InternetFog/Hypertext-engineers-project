@@ -68,7 +68,7 @@ function UpdateDate() {
  * <p>2 - Заочное 1
  * <p>3 - Заочное 2
  * @return При успешном запросе возвращает массив групп
- *//*
+ */
  function GetGroups(course, type) {
 	if (course === "" || course === undefined) throw "Пустой параметр"
 	if (type === "" || type === undefined) throw "Пустой параметр"
@@ -88,18 +88,7 @@ function UpdateDate() {
 			  console.log("ERR: ReadyState - " + this.readyState + " Status - " + this.status)
 		 }
 	}
-}*/
-
-function GetGroups() {
-
-			  let json = JSON.parse(teachers);
-			  let str = "<ul>"
-			  for(let i = 0; i < json.length; i++)
-					str += `<li>${json[i].title}</li>`
-			  return (str + "</ul>")
-
 }
-alert(GetGroups())
 
 /**
  * @description Запрос списка преподавателей по ID факультета

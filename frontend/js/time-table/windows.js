@@ -25,6 +25,10 @@ var tableWindow = {
 						curInnerHTML = radioBoxBlock.innerHTML;
 					}
 				}
+				if(param5) {
+					let listBlock = mainParent.querySelector('.time-table-list-block');
+					listBlock.innerHTML = teachersList();
+				}
 				tableWindow.containers.left.append(mainParent);
 				tableWindow.list.dinamicUI();
 			break;
@@ -86,51 +90,7 @@ var tableWindow = {
 				</div>
 			</div>
 			<div class="time-table-radio-box-block"></div>
-			<div class="time-table-list-block">
-				<span class="time-table-list-block-heading">Факультет</span>
-				<ul class="time-table-list">
-					<li>
-						<span>Прочее</span>
-						<ul>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-						</ul>
-					</li>
-					<li>
-						<span>Факультет экологии, сервиса, технологии и дизайна</span>
-						<ul>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-						</ul>
-					</li>
-					<li>
-						<span>Институт пищевой инженерии и биотехнологии</span>
-						<ul>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-						</ul>
-					</li>
-					<li>
-						<span>Строительный факультет</span>
-						<ul>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-							<li><span>Алексеева И.А.</span></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<div class="time-table-list-block"></div>
 		</div>
 		`,
 		dinamicUI: function() {
@@ -528,6 +488,7 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 		let heading;
 		let placeholder;
 		let switcher;
+		let structList;
 		switch(tableBtnRole) {
 			case 'bachelor': 
 				heading = 'Бакалавриат, специалитет';
@@ -553,6 +514,7 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 				heading = 'Преподаватели';
 				placeholder = 'Фамилия И.О.';
 				switcher = 0;
+				structList = teachersList();
 			break;
 			case 'audience-schedule': 
 				heading = 'Расписание аудиторий';
@@ -565,6 +527,6 @@ for (let i = 0; i < timeTableMainMenu.length; i++) {
 				switcher = 0;
 			break;
 		}
-		tableWindow.create('list', heading, placeholder, switcher);
+		tableWindow.create('list', heading, placeholder, switcher, structList);
 	});
 }
