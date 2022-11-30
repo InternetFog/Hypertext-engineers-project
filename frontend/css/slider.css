@@ -1,0 +1,200 @@
+/* ----------------------------------------- Слайдер на главной странице ---------------------------------------- */
+.main-slider-wrapper {
+	position: relative;
+	overflow: hidden;
+	background: var(--color-esstu-cyan);
+	padding: 0 15px;
+}
+
+.main-slider-background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(110%);
+	filter: blur(30px) brightness(65%) contrast(120%);
+}
+
+.main-slider {
+	max-width: var(--max-width-content-block);
+	margin: 0 auto;
+}
+
+.main-slider_content-item {
+	position: absolute;
+	top: 0;
+	z-index: -5;
+	display: flex;
+	opacity: 0;
+	transition: 0.5s;
+	filter: blur(5px);
+	transform: scale(0.8);
+}
+
+.main-slider_content-item.current {
+	position: static;
+	opacity: 1;
+	filter: none;
+	transform: scale(1);
+}
+
+.main-slider_description-block,
+.main-slider_image-block {
+	position: relative;
+	width: 50%;
+}
+
+/* ---------- Блок с изображениями ---------- */
+.main-slider_image-block {
+	position: relative;
+	height: 350px;
+	margin: 35px 0;
+}
+
+.main-slider_image-block img {
+	position: absolute;
+	right: 0;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px #00596614;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* ---------- Блок с описанием ---------- */
+.main-slider_description-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 70px 25px 80px 0;
+}
+
+.main-slider_description {
+	height: calc(15em);
+	overflow: auto;
+	margin-bottom: 25px;
+}
+
+.main-slider_description h2 {
+	color: var(--color-white);
+	font-size: var(--font-size-heading-big);
+	margin-bottom: 20px;
+}
+
+.main-slider_description p {
+	color: var(--color-gray-c);
+	font-size: var(--font-size-content);
+}
+
+.main-slider_action-btn {
+	display: inline-flex;
+	color: var(--color-black);
+	font-size: var(--font-size-content);
+	font-weight: 600;
+	text-decoration: none;
+	padding: 10px 25px;
+	border-radius: 3px;
+	background: var(--color-white);
+	transition: 0.2s;
+}
+
+.main-slider_action-btn:hover {
+	background: var(--color-gray-e);
+}
+
+.main-slider_action-btn:active {
+	background: var(--color-gray-d);
+}
+
+/* ---------- Блок с точками ---------- */
+.slider-dots-block {
+	display: flex;
+	position: absolute;
+	bottom: 35px;
+}
+
+.slider-dot {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border: 2px solid var(--color-white);
+	margin-right: 7px;
+	box-shadow: 2px 2px 8px #00596614;
+	cursor: pointer;
+}
+
+.slider-dot.current {
+	background: var(--color-white);
+	cursor: default;
+}
+
+
+/* ----------------------------------------- Адаптация ---------------------------------------- */
+
+/* Небольшие мониторы */
+@media only screen and (max-width: 1460px) {
+	.main-slider_description-block {
+		padding: 35px 25px 80px 0;
+		display: block;
+	}
+}
+
+/* Планшеты и телефоны */
+@media only screen and (max-width: 900px) {
+	.main-slider_content-item {
+		flex-direction: column;
+	}
+
+	.main-slider_image-block {
+		width: 100%;
+		order: -1;
+	}
+
+	.main-slider_description-block {
+		padding: 0 0 80px 0;
+		width: 100%;
+	}
+}
+
+/* Только планшеты */
+@media only screen and (min-width: 420px) and (max-width: 900px) {
+	.main-slider_content-item {
+		flex-direction: column;
+	}
+
+	.main-slider_image-block {
+		width: 100%;
+		order: -1;
+	}
+
+	.main-slider_description-block {
+		padding: 0 0 80px 0;
+		width: 100%;
+	}
+
+	.main-slider_description-block div {
+		text-align: center;
+	}
+
+	.main-slider_image-block img {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		right: auto;
+	}
+
+	.slider-dots-block {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+/* Только Телефоны */
+@media only screen and (max-width: 420px) {
+	.main-slider_image-block {
+		height: 220px;
+	}
+
+	.main-slider_image-block {
+		margin: 35px 0 15px 0;
+	 }
+}

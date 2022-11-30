@@ -1,0 +1,431 @@
+/* ----------------------------------------- Карточки публикаций ---------------------------------------- */
+.publication-cards-wrapper {
+	--card-width: calc(var(--max-width-content-block)*0.3333 - 10px);
+	--card-height: calc(var(--card-width)/16*10);
+
+	position: relative;
+	max-width: var(--max-width-content-block);
+	margin: 30px auto;
+	padding: 0 15px;
+}
+
+.publications-type-heading {
+	display: inline-block;
+	margin-bottom: 15px;
+	color: var(--color-esstu-cyan);
+	font-size: var(--font-size-heading);
+	font-weight: 600;
+	text-decoration: none;
+	transition: 0.1s;
+
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.publication-cards-wrapper.orange .publications-type-heading {
+	color: var(--color-esstu-orange);
+}
+
+.publications-type-heading h2 {
+	font-size: var(--font-size-heading);
+}
+
+.publications-type-heading:active {
+	color: var(--color-esstu-cyan-dark);
+}
+
+.publication-cards-block {
+	position: relative;
+	display: inline-flex;
+	flex-wrap: nowrap;
+	overflow: visible;
+	left: 0px;
+	transition: 0.4s;	
+}
+
+.all-publications-btn {
+	position: absolute;
+	left: calc(-1*var(--card-height)/2 - 40px);
+	z-index: 5;
+	transform: rotate(-90deg);
+}
+
+.all-publications-btn a {
+	position: relative;
+	right: 40%;
+	display: block;
+	width: var(--card-height);
+	padding: 15px 0;
+	text-align: center;
+	border-radius: 5px;
+	color: var(--color-white);
+	font-size: var(--font-size-content-big);
+	font-weight: 600;
+	background: var(--color-esstu-cyan);
+	text-decoration: none;
+	white-space: nowrap;
+	transition: 0.1s;
+}
+
+.all-publications-btn a:active {
+	transform: scale(98%);
+}
+
+.publication-cards-wrapper.orange .all-publications-btn a {
+	background: var(--color-esstu-orange);
+}
+
+/* ---------- Общие стили карточек ---------- */
+.publication-card {
+	display: block;
+	position: relative;
+	width: var(--card-width);
+	height: var(--card-height);
+	margin-right: 15px;
+	border-radius: 5px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.1s;
+
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.publication-card:active {
+	transform: scale(99%);
+}
+
+/* Конпки управления каруселью */
+.carousel-btn {
+	display: none;
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	width: 28px;
+	height: 28px;
+	padding: 4px;
+	border-radius: 50%;
+	background: var(--color-white);
+	box-shadow: 0px 2px 6px #00000020;
+	cursor: pointer;
+	transition: 0.1s;
+}
+
+.carousel-btn.visible {
+	display: block;
+}
+
+.carousel-btn.plus {
+	padding: 4px 3px 4px 5px;
+	right: -48px;
+}
+
+.carousel-btn.minus {
+	padding: 4px 5px 4px 3px;
+	left: -48px;
+}
+
+.carousel-btn:hover {
+	background: var(--color-esstu-cyan-light-e);
+}
+
+.carousel-btn:active {
+	background: var(--color-esstu-cyan-light-d);
+}
+
+.carousel-btn path {
+	fill: var(--color-esstu-cyan);
+}
+
+.carousel-btn::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -15px;
+	transform: translateY(-50%);
+	width: calc(100% + 30px);
+	height: var(--card-height);
+}
+
+/* обложка */
+.publication-card_thumbnail {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Список категорий */
+.publication-card_category-list {
+	position: absolute;
+	top: 5px;
+	left: 0;
+	z-index: 5;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.publication-card_category-list li {
+	list-style: none;
+}
+
+.publication-card_category-list li a {
+	display: block;
+	border-radius: 5px;
+	padding: 4px 10px;
+	white-space: nowrap;
+	font-size: var(--font-size-content-small);
+	color: var(--color-black);
+	background: var(--color-white);
+	box-shadow: 0px 2px 3px #00000014;
+	text-decoration: none;
+	transition: 0.1s;
+}
+
+.publication-card_category-list li a:hover {
+	background: var(--color-gray-e);
+}
+
+.publication-card_category-list li a:active {
+	background: var(--color-gray-d);
+}
+
+/* блок описания */
+.publication-card_description {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	padding: 10px 0 15px 0;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(35px) brightness(85%);
+}
+
+.publication-card_description::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background: var(--color-esstu-cyan);
+	opacity: 0.9;
+}
+
+.publication-cards-wrapper.orange .publication-card_description::before {
+	background: var(--color-esstu-orange);
+}
+
+.publication-card_link {
+	display: block;
+	padding-bottom: var(--font-size-content-small);
+	margin-bottom: 5px;
+}
+
+.publication-card_link::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: var(--card-height);
+}
+
+.publication-card_description h3 {
+	display: inline-block;
+	font-size: var(--font-size-content-big);
+	font-weight: 600;
+	color: var(--color-white);
+	margin: 0 15px 5px 15px;
+}
+
+.publication-card_description .date-n-author {
+	position: absolute;
+	left: 0;
+	bottom: 15px;
+	z-index: 5;
+	display: inline-flex;
+	min-width: 100%;
+	white-space: nowrap;
+	font-size: var(--font-size-content-small);
+	transition: 1.2s;
+}
+
+.publication-card_description .date-n-author span {
+	color: var(--color-gray-e);
+	margin-right: 22px;
+	margin-left: 15px;
+}
+
+.publication-card_description .date-n-author .author {
+	display: list-item;
+	color: var(--color-gray-e);
+	text-decoration: underline;
+	list-style-type: disc;
+	padding-left: 2px;
+	margin-right: 15px;
+}
+
+.publication-card_description .date-n-author .author:hover,
+.publication-card_description .date-n-author .author:active {
+	text-decoration: none;
+}
+
+.publication-card_description .date-n-author:hover,
+.publication-card_description .date-n-author:active {
+	transform: translateX(calc(var(--card-width) - 100%));
+}
+
+
+
+
+/* ---------- Переопределение стилей карточек видео ---------- */
+.publication-cards-wrapper.type-is-video .publication-cards-block {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-row-gap: 15px;
+}
+
+.publication-cards-wrapper.type-is-video .publication-card:first-of-type {
+	grid-row-start: 1;
+	grid-row-end: 3;
+	height: 100%;
+}
+
+.publication-cards-wrapper.type-is-video .publication-card_description h3 {
+	margin-bottom: 0;
+}
+
+.play-video-icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 26px;
+	height: 26px;
+	padding: 10px;
+	border-radius: 50%;
+	background: var(--color-white);
+	box-shadow: 0px 2px 6px #00000020;
+}
+
+.play-video-icon path {
+	fill: var(--color-esstu-cyan);
+}
+
+
+/* ----------------------------------------- Закреплённые разделы ---------------------------------------- */
+.pinned-sections-wrapper {
+	position: relative;
+	max-width: var(--max-width-content-block);
+	margin: 45px auto;
+	padding: 0 15px;
+}
+
+.pinned-sections-block {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-row-gap: 15px;
+	grid-column-gap: 15px;
+}
+
+.pinned-section {
+	display: flex;
+	align-items: center;
+	padding: 2px;
+	border-radius: 7px;
+	text-decoration: none;
+	font-size: var(--font-size-content);
+	color: var(--color-black);
+	transition: 0.1s;
+}
+
+.pinned-section:hover {
+	background: var(--color-esstu-cyan-light-e);
+}
+
+.pinned-section:active {
+	box-shadow: inset -1px 0px 6px #0002;
+}
+
+
+.pinned-section img {
+	position: relative;
+	left: -2px;
+	width: 80px;
+	height: 80px;
+	border-radius: 5px;
+	border: 2px solid var(--color-esstu-cyan-light-d);
+	box-shadow: 0px 1px 4px #00596620;
+}
+
+.pinned-section span {
+	margin: 0 15px;
+}
+
+
+/* ----------------------------------------- Адаптация ---------------------------------------- */
+
+/* Небольшие мониторы */
+@media only screen and (max-width: 1460px) {
+	/* Общие слити */
+	.all-publications-btn a {
+		right: 38%;
+	}
+}
+
+@media only screen and (max-width: 1245px) {
+	/* Общие слити */
+	.publication-cards-wrapper {
+		padding: 0 14px;
+		--card-width: 	calc((100vw - var(--main-control-panel-width) - 30px)/2 - 15px);
+		max-width: 100vw;
+	}
+
+	.all-publications-btn {
+		display: none;
+	}
+}
+
+/* Планшеты и телефоны */
+@media only screen and (max-width: 900px) {
+	/* Общие слити */
+	.publication-cards-wrapper {
+		padding: 0 14px;
+		--card-width: 	calc((100vw - 30px) - 15px);
+		--card-height: calc(var(--card-width)/16*9);
+		width: 100vw;
+	}
+
+	/* Закреплённые разделы */
+	.pinned-sections-block {
+		grid-template-columns: 1fr;
+	}
+	
+	/* Блок с видео */
+	.publication-cards-wrapper.type-is-video .publication-cards-block {
+		display: inline-flex;
+	}
+
+	.publication-cards-wrapper.type-is-video .publication-card:first-of-type {
+		height: var(--card-height);
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	.publication-cards-wrapper {
+		--card-height: calc(var(--card-width)/3*4);
+	}
+}
